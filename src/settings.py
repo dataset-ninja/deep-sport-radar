@@ -40,7 +40,7 @@ if RELEASE_DATE is None:
 HOMEPAGE_URL: str = "https://github.com/DeepSportradar/instance-segmentation-challenge"
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = 14347174
+PREVIEW_IMAGE_ID: int = 14347307
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
 GITHUB_URL: str = "https://github.com/dataset-ninja/deep-sport-radar"
@@ -84,7 +84,7 @@ ORGANIZATION_URL: Optional[Union[str, List[str]]] = "https://sportradar.com/"
 
 # Set '__PRETEXT__' or '__POSTTEXT__' as a key with string value to add custom text. e.g. SLYTAGSPLIT = {'__POSTTEXT__':'some text}
 SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {
-    "2 courts": ["camcourt 1", "camcourt 2"],
+    "courts": ["camcourt 1", "camcourt 2"],
     "__POSTTEXT__": "Additionally, every image marked with its ***sequence*** tag",
 }
 TAGS: Optional[List[str]] = None
