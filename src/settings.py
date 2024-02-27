@@ -26,14 +26,18 @@ LICENSE: License = License.Apache_2_0(
 APPLICATIONS: List[Union[Industry, Domain, Research]] = [Industry.Sports()]
 CATEGORY: Category = Category.Sports()
 
-CV_TASKS: List[CVTask] = [CVTask.InstanceSegmentation(), CVTask.SemanticSegmentation(), CVTask.ObjectDetection()]
+CV_TASKS: List[CVTask] = [
+    CVTask.InstanceSegmentation(),
+    CVTask.SemanticSegmentation(),
+    CVTask.ObjectDetection(),
+]
 ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.InstanceSegmentation()]
 
 RELEASE_DATE: Optional[str] = "2022-08-17"  # e.g. "YYYY-MM-DD"
 if RELEASE_DATE is None:
     RELEASE_YEAR: int = None
 
-HOMEPAGE_URL: str = https://github.com/DeepSportradar/instance-segmentation-challenge
+HOMEPAGE_URL: str = "https://github.com/DeepSportradar/instance-segmentation-challenge"
 # e.g. "https://some.com/dataset/homepage"
 
 PREVIEW_IMAGE_ID: int = 14347174
@@ -45,7 +49,9 @@ GITHUB_URL: str = "https://github.com/dataset-ninja/deep-sport-radar"
 ##################################
 ### * Optional after uploading ###
 ##################################
-DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = "https://www.kaggle.com/datasets/deepsportradar/basketball-instants-dataset/download?datasetVersionNumber=4"
+DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = (
+    "https://www.kaggle.com/datasets/deepsportradar/basketball-instants-dataset/download?datasetVersionNumber=4"
+)
 # Optional link for downloading original dataset (e.g. "https://some.com/dataset/download")
 
 CLASS2COLOR: Optional[Dict[str, List[str]]] = None
@@ -58,14 +64,29 @@ BLOGPOST: Optional[Union[str, List[str], Dict[str, str]]] = None
 REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = None
 
 CITATION_URL: Optional[str] = None
-AUTHORS: Optional[List[str]] = ["Gabriel Van Zandycke", "Vladimir Somers", "Maxime Istasse", "Carlo Del Don", "Davide Zambrano"]
-AUTHORS_CONTACTS: Optional[List[str]] = ["g.vanzandycke@sportradar.com", "v.somers@sportradar.com", "m.istasse@sportradar.com", "c.deldon@sportradar.com", "d.zambrano@sportradar.com"]
+AUTHORS: Optional[List[str]] = [
+    "Gabriel Van Zandycke",
+    "Vladimir Somers",
+    "Maxime Istasse",
+    "Carlo Del Don",
+    "Davide Zambrano",
+]
+AUTHORS_CONTACTS: Optional[List[str]] = [
+    "g.vanzandycke@sportradar.com",
+    "v.somers@sportradar.com",
+    "m.istasse@sportradar.com",
+    "c.deldon@sportradar.com",
+    "d.zambrano@sportradar.com",
+]
 
 ORGANIZATION_NAME: Optional[Union[str, List[str]]] = "Sportradar AG, Switzerland"
 ORGANIZATION_URL: Optional[Union[str, List[str]]] = "https://sportradar.com/"
 
 # Set '__PRETEXT__' or '__POSTTEXT__' as a key with string value to add custom text. e.g. SLYTAGSPLIT = {'__POSTTEXT__':'some text}
-SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {"2 courts":["camcourt 1", "camcourt 2"], "__POSTTEXT__": "Additionally, every image marked with its ***sequence*** tag"}
+SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {
+    "2 courts": ["camcourt 1", "camcourt 2"],
+    "__POSTTEXT__": "Additionally, every image marked with its ***sequence*** tag",
+}
 TAGS: Optional[List[str]] = None
 
 
