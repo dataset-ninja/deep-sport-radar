@@ -61,7 +61,9 @@ CLASS2COLOR: Optional[Dict[str, List[str]]] = None
 # Use dict key to specify name for a button
 PAPER: Optional[Union[str, List[str], Dict[str, str]]] = "https://arxiv.org/pdf/2208.08190"
 BLOGPOST: Optional[Union[str, List[str], Dict[str, str]]] = None
-REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = None
+REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = {
+    "Kaggle": "https://www.kaggle.com/datasets/deepsportradar/basketball-instants-dataset"
+}
 
 CITATION_URL: Optional[str] = None
 AUTHORS: Optional[List[str]] = [
