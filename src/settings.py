@@ -14,7 +14,7 @@ from dataset_tools.templates import (
 # * Before uploading to instance #
 ##################################
 PROJECT_NAME: str = "DeepSportRadar"
-PROJECT_NAME_FULL: str = "DeepSportRadar Instance Segmentation Challenge v.2"
+PROJECT_NAME_FULL: str = "DeepSportRadar Instance Segmentation Challenge v.2 Dataset"
 HIDE_DATASET = True  # set False when 100% sure about repo quality
 
 ##################################
