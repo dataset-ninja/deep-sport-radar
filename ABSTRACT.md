@@ -5,6 +5,8 @@ The authors present **DeepSportRadar Instance Segmentation Challenge v.2 Dataset
 * **Player instance segmentation.** This task deals with the segmentation of individual humans (players, coaches and referees) on the basketball court.
 * **Player re-identification.** In this task, the objective is to re-identify basketball players across multiple video frames captured from the same camera viewpoint at various time instants.
 
+**Note:** the presented information on DatasetNinja is related to the instance segmentation task, but you can always refer to the [original data](https://www.kaggle.com/datasets/deepsportradar/basketball-instants-dataset)
+
 ## Motivation
 
 Individual and professional sports have long wielded significant influence over the economic, political, and cultural fabric of society. In terms of economics alone, this impact is poised for expansion, with the global sports market, encompassing services and goods offered by sports entities, projected to surge from $354.96 billion in 2021 to a staggering $707.84 billion in 2026. The online live-streaming sector, in particular, is forecasted to witness remarkable growth, with its value skyrocketing from $18.12 billion in 2020 to $87.34 billion in 2028. A driving force behind this growth trajectory is the rapid advancement of technology, reshaping the landscape of sports consumption.

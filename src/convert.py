@@ -13,6 +13,7 @@ from supervisely.io.fs import (
     get_file_name,
     get_file_name_with_ext,
 )
+from supervisely.io.json import load_json_file
 from tqdm import tqdm
 
 import src.settings as s
@@ -83,6 +84,7 @@ def convert_and_upload_supervisely_project(
 ) -> sly.ProjectInfo:
     ### Function should read local dataset and upload it to Supervisely project, then return project info.###
     dataset_path = "/home/alex/DATASETS/TODO/DeepSportradar/archive"
+    tags_path = "/home/alex/DATASETS/TODO/DeepSportradar/archive/basketball-instants-dataset.json"
     batch_size = 5
     group_tag_name = "im id"
 
@@ -110,6 +112,17 @@ def convert_and_upload_supervisely_project(
         image_np = sly.imaging.image.read(image_path)[:, :, 0]
         img_height = image_np.shape[0]
         img_wight = image_np.shape[1]
+
+        arena_name = image_path.split("/")[-3]
+        arena_meta = meta.get_tag_meta(arena_name.lower())
+        arena_tag = sly.Tag(arena_meta)
+        tags.append(arena_tag)
+
+        idxes_values = arenas_to_tags[arena_name]
+        game_id_tag = sly.Tag(game_id_meta, value=idxes_values[0])
+        tags.append(game_id_tag)
+        league_id_tag = sly.Tag(league_id_meta, value=idxes_values[1])
+        tags.append(league_id_tag)
 
         im_name = get_file_name(image_path)
 
@@ -160,15 +173,49 @@ def convert_and_upload_supervisely_project(
     camcourt1 = sly.TagMeta("camcourt 1", sly.TagValueType.NONE)
     camcourt2 = sly.TagMeta("camcourt 2", sly.TagValueType.NONE)
     seq_meta = sly.TagMeta("sequence", sly.TagValueType.ANY_NUMBER)
+    game_id_meta = sly.TagMeta("game id", sly.TagValueType.ANY_NUMBER)
+    league_id_meta = sly.TagMeta("league id", sly.TagValueType.ANY_NUMBER)
+
+    arenas_names = [
+        "ks-fr-gravelines",
+        "ks-fr-stchamond",
+        "ks-fr-blois",
+        "ks-fr-caen",
+        "ks-fr-strasbourg",
+        "ks-fr-vichy",
+        "ks-fr-nancy",
+        "ks-fr-nantes",
+        "ks-fr-lemans",
+        "ks-fr-monaco",
+        "ks-fr-fos",
+        "ks-fr-bourgeb",
+        "ks-fr-poitiers",
+        "ks-fr-limoges",
+        "ks-fr-roanne",
+    ]
 
     name_to_tag = {"camcourt1": camcourt1, "camcourt2": camcourt2}
+
+    ids_data = load_json_file(tags_path)
+    arenas_to_tags = {}
+    for i in ids_data:
+        if i["arena_label"] not in arenas_to_tags.keys():
+            arenas_to_tags[i["arena_label"]] = [i["game_id"], i["league_id"]]
 
     group_tag_meta = sly.TagMeta(group_tag_name, sly.TagValueType.ANY_STRING)
 
     project = api.project.create(workspace_id, project_name, change_name_if_conflict=True)
     meta = sly.ProjectMeta(
-        obj_classes=[human, ball], tag_metas=[group_tag_meta, camcourt1, camcourt2, seq_meta]
+        obj_classes=[human, ball],
+        tag_metas=[group_tag_meta, camcourt1, camcourt2, seq_meta, game_id_meta, league_id_meta],
     )
+
+    arena_tags = []
+    for arena in arenas_names:
+        curr_tag = sly.TagMeta(arena, sly.TagValueType.NONE)
+        arena_tags.append(curr_tag)
+    meta = meta.add_tag_metas(arena_tags)
+
     api.project.update_meta(project.id, meta.to_json())
     api.project.images_grouping(id=project.id, enable=True, tag_name=group_tag_name)
 
@@ -183,10 +230,8 @@ def convert_and_upload_supervisely_project(
             all_images_pathes = glob.glob(curr_path + "/*/*.png")
 
             images_pathes = []
-            # images_names = []
             for im_path in all_images_pathes:
                 if get_file_ext(im_path) != ".json" and "_humans" not in im_path:
-                    # images_names.append(get_file_name_with_ext(im_path))
                     images_pathes.append(im_path)
 
             progress = sly.Progress("Create dataset {}".format(ds_name), len(images_pathes))

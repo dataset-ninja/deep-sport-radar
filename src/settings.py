@@ -20,8 +20,8 @@ HIDE_DATASET = True  # set False when 100% sure about repo quality
 ##################################
 # * After uploading to instance ##
 ##################################
-LICENSE: License = License.Apache_2_0(
-    source_url="https://github.com/DeepSportradar/instance-segmentation-challenge/blob/master/LICENSE"
+LICENSE: License = License.CC_BY_NC_SA_4_0(
+    source_url="https://www.kaggle.com/datasets/deepsportradar/basketball-instants-dataset"
 )
 APPLICATIONS: List[Union[Industry, Domain, Research]] = [Industry.Sports()]
 CATEGORY: Category = Category.Sports()
@@ -30,6 +30,7 @@ CV_TASKS: List[CVTask] = [
     CVTask.InstanceSegmentation(),
     CVTask.SemanticSegmentation(),
     CVTask.ObjectDetection(),
+    CVTask.Identification(),
 ]
 ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.InstanceSegmentation()]
 
@@ -86,10 +87,27 @@ ORGANIZATION_URL: Optional[Union[str, List[str]]] = "https://sportradar.com/"
 
 # Set '__PRETEXT__' or '__POSTTEXT__' as a key with string value to add custom text. e.g. SLYTAGSPLIT = {'__POSTTEXT__':'some text}
 SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {
+    "arena labels": [
+        "ks-fr-gravelines",
+        "ks-fr-stchamond",
+        "ks-fr-blois",
+        "ks-fr-caen",
+        "ks-fr-strasbourg",
+        "ks-fr-vichy",
+        "ks-fr-nancy",
+        "ks-fr-nantes",
+        "ks-fr-lemans",
+        "ks-fr-monaco",
+        "ks-fr-fos",
+        "ks-fr-bourgeb",
+        "ks-fr-poitiers",
+        "ks-fr-limoges",
+        "ks-fr-roanne",
+    ],
     "courts": ["camcourt 1", "camcourt 2"],
-    "__POSTTEXT__": "Additionally, every image marked with its ***sequence*** tag",
+    "__POSTTEXT__": "Additionally, every image marked with its ***sequence*** and ***im id*** tags",
 }
-TAGS: Optional[List[str]] = None
+TAGS: Optional[List[str]] = ["multi-camera"]
 
 
 SECTION_EXPLORE_CUSTOM_DATASETS: Optional[List[str]] = None
