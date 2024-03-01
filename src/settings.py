@@ -105,7 +105,7 @@ SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {
         "ks-fr-roanne",
     ],
     "courts": ["camcourt 1", "camcourt 2"],
-    "__POSTTEXT__": "Additionally, every image marked with its ***sequence*** and ***im id*** tags",
+    "__POSTTEXT__": "Additionally, every image marked with its ***sequence***, ***game id***, ***league id*** and ***im id*** tags",
 }
 TAGS: Optional[List[str]] = ["multi-camera"]
 
