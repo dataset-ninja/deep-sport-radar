@@ -1,6 +1,6 @@
 Dataset **DeepSportRadar** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/U/f/2g/W7EA861njlzXa3W9sMPDfLglfuuPhSrNNFfuZkwRFdkN5yINdERF52gCmXsTRKYUSn7XqoR64qhFFcVM7XhfK4a70kVJrU88wGLP97LZaO4dmSc5ht2LjdTErzxV.tar)
+ [Download](https://www.dropbox.com/scl/fi/kwctvimhmy9dtlz8roozv/deepsportradar-DatasetNinja.tar?rlkey=rc1w00x2pl7lvxcyez4ovtdbr&dl=1)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
